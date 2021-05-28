@@ -40,7 +40,7 @@ module.exports = {
             filename: './index.html',
             template: './src/index.html',
             inject: 'body',
-            favicon: './src/favicon.ico',
+            // favicon: './src/favicon.ico',
         }),
         new MiniCssExtract({
             // filename: '[name].[fullhash].css',
@@ -50,7 +50,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
               { from: "src/assets/", to: "assets/" },
-              { from: "src/favicon.ico"}
+            //   { from: "src/favicon.ico"}
             ],
           }),
     ]
