@@ -9,6 +9,7 @@ const ulFilters         = document.querySelector('.filters');
 const anchorFilters     = document.querySelectorAll('.filter');
 
 const todoCount         = document.querySelector('.todo-count');
+const toggleAll         = document.querySelector('#toggle-all');
 
 export const  createTodoHTML = ( td ) => {
 
@@ -17,6 +18,7 @@ export const  createTodoHTML = ( td ) => {
         <div class="view">
             <input class="toggle" type="checkbox" ${ td.completed ? 'checked': ''}>
             <label>${ td.todo }</label>
+            <span class="todo-created">Creado el: ${ td.created }</span>
             <button class="destroy"></button>
         </div>
         <input class="edit" value="Create a TodoMVC template">
@@ -55,6 +57,7 @@ inputTodo.addEventListener('keyup', (ev) => {
         // console.log(todoList);
         // console.log( todoList.pendingTodoQuantity() );
         todoCount.firstChild.innerHTML = todoList.pendingTodoQuantity();
+        toggleWrapperTodos();
     }
 });
 
@@ -80,6 +83,7 @@ wrapperTodoList.addEventListener('click', (ev) => {
     // console.log( todoList );
     // console.log( todoList.pendingTodoQuantity() );
     todoCount.firstChild.innerHTML = todoList.pendingTodoQuantity();
+    toggleWrapperTodos();
 });
 
 clearCompleted.addEventListener('click', () => {
@@ -94,6 +98,7 @@ clearCompleted.addEventListener('click', () => {
             wrapperTodoList.removeChild( el );
         }
     }
+    toggleWrapperTodos();
 });
 
 ulFilters.addEventListener('click', (ev) => {
@@ -133,4 +138,16 @@ ulFilters.addEventListener('click', (ev) => {
             break;
         }
     }
+    toggleWrapperTodos();
 });
+
+toggleAll.addEventListener('click', () => {
+    wrapperTodoList.classList.toggle('hidden');
+})
+
+const toggleWrapperTodos = () => {
+    console.log(wrapperTodoList.style.visibility);
+    if( wrapperTodoList.classList.contains('hidden') ){
+        wrapperTodoList.classList.remove('hidden')
+    }
+}

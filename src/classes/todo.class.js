@@ -20,7 +20,7 @@ export class Todo {
         // id basado en el tiempo
         this.id = new Date().getTime();
         this.completed = false;
-        this.created   = new Date();
+        this.created   = new Date().toLocaleDateString();
     }
 
     printClass() {
